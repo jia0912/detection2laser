@@ -13,7 +13,7 @@
 - Python 3.x
 - OpenCV
 - NumPy
-- YOLO模型
+- YOLOv8
 
 ## 使用流程
 
@@ -21,13 +21,13 @@
    - 執行 `calbration.py` 進行相機與振鏡之間的校正，確保兩者之間的座標系統能夠準確對應。
 
 2. **確認校正結果**:
-   - 執行 `trans.py`，使用滑鼠在影像上確認相機座標與振鏡座標的對應是否正確。
+   - 執行 `transTest.py`，使用滑鼠在影像上確認相機座標與振鏡座標的對應是否正確。
 
 3. **座標轉換與投影**:
-   - `get3.py` 將接收YOLO辨識後的物件影像座標，並將這些座標轉換為對應的振鏡座標，進行投影。
+   - `receiveProjection.py` 將接收YOLO辨識後的物件影像座標，並將這些座標轉換為對應的振鏡座標，進行投影。
 
 4. **模擬物件移動與通訊**:
-   - `send.py` 模擬YOLO辨識物件的移動，並將物件的影像座標傳送到主機，供 `get3.py` 進行座標轉換。
+   - `simulationSend.py` 模擬YOLO辨識物件的移動，並將物件的影像座標傳送到主機，供 `receiveProjection.py` 進行座標轉換。
 
 ## 注意事項
 
@@ -36,12 +36,18 @@
 ## 檔案介紹
 
 - **calbration.py**: 用於校正相機與振鏡的相對座標。
-- **trans.py**: 用於確認相機與振鏡座標系統的對應，並提供可視化操作。
-- **get3.py**: 接收YOLO模型輸出的物件座標，並進行轉換為振鏡座標，然後進行投影操作。
-- **send.py**: 模擬YOLO辨識的物件移動，並將物件座標發送到主機進行後續處理。
+- **transTest.py**: 用於確認相機與振鏡座標系統的對應，並提供可視化操作。
+- **receiveProjection.py**: 接收YOLO模型輸出的物件座標，並進行轉換為振鏡座標，然後進行投影操作。
+- **simulationSend.py**: 模擬YOLO辨識的物件移動，並將物件座標發送到主機進行後續處理。
 
-## 如何執行
+## How to use?
 
-1. **執行校正程序**:
+1. **Install requirements**:
+   ```bash
+   pip install -r requirements.txt
+2. **校正雷射投影**:
    ```bash
    python calbration.py
+3. **主要投影程式**:
+   ```bash
+   python receiveProjection.py

@@ -3,6 +3,7 @@ import numpy as np
 import csv
 import time
 import serial
+import os
 
 # 初始化串口連接
 <<<<<<< HEAD
@@ -149,6 +150,10 @@ def calculate_transformation_matrix(galvo_points, image_points, matrix_file="tra
 # 7. 主程序
 # -----------------------------
 def main():
+    # 建立儲存影像的資料夾
+    image_folder = "calibration_images"
+    os.makedirs(image_folder, exist_ok=True)
+
     camera = cv2.VideoCapture(2)
 <<<<<<< HEAD
     # camera.set(cv2.CAP_PROP_FRAME_WIDTH,1280)
@@ -178,7 +183,7 @@ def main():
         print(f"\n校正點 {idx + 1}/{len(galvo_points)}")
         send_to_galvo(galvo_x, galvo_y)  # 發送振鏡命令
 
-        image_path = f"calibration_image_{idx}.jpg"
+        image_path = os.path.join(image_folder, f"calibration_image_{idx}.jpg")
         capture_image(camera, image_path)
 
         point = collect_image_point(image_path)
