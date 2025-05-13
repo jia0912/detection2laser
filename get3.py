@@ -7,7 +7,11 @@ import os
 import cv2
 
 # 初始化串口連接
+<<<<<<< HEAD
 ser = serial.Serial('COM3', 115200, timeout=0.1)  # 修改 COM9 為您的 Arduino 端口號
+=======
+ser = serial.Serial('COM7', 115200, timeout=0.1)  # 修改 COM9 為您的 Arduino 端口號
+>>>>>>> b3dac3b (optimization)
 time.sleep(2)  # 給 Arduino 一些啟動時間
 
 # -----------------------------
@@ -46,13 +50,21 @@ def image_to_galvo(image_point, transformation_matrix):
     y = int(galvo_point[1] / galvo_point[2])
 
     # 只返回範圍在 0 到 4095 之間的座標
+<<<<<<< HEAD
     if 0 <= x <= 4095 and 0 <= y <= 4095:
+=======
+    if 0 <= x <= 2000 and 700 <= y <= 2300:
+>>>>>>> b3dac3b (optimization)
         return x, y
     else:
         return None
 
 # 繪製座標並顯示影像
+<<<<<<< HEAD
 def draw_coordinates_on_image(coords_list, frame_width=640, frame_height=480):
+=======
+def draw_coordinates_on_image(coords_list, frame_width=2560, frame_height=1440):
+>>>>>>> b3dac3b (optimization)
     # 創建黑色背景的影像
     frame = np.zeros((frame_height, frame_width, 3), dtype=np.uint8)
     
@@ -69,6 +81,10 @@ def draw_coordinates_on_image(coords_list, frame_width=640, frame_height=480):
         cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)  # 綠色框
     
     # 顯示影像
+<<<<<<< HEAD
+=======
+    cv2.namedWindow("Received Coordinates", cv2.WINDOW_NORMAL)
+>>>>>>> b3dac3b (optimization)
     cv2.imshow("Received Coordinates", frame)
     cv2.waitKey(1)  # 這裡等待1毫秒即可，因為會在每個循環中更新
 
