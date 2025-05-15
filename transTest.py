@@ -5,11 +5,7 @@ import time
 import os
 
 # 初始化串口連接
-<<<<<<< HEAD
-ser = serial.Serial('COM3', 115200, timeout=0.1)  # 修改 COM9 為您的 Arduino 端口號
-=======
 ser = serial.Serial('COM7', 115200, timeout=0.1)  # 修改 COM9 為您的 Arduino 端口號
->>>>>>> b3dac3b (optimization)
 time.sleep(2)  # 給 Arduino 一些啟動時間
 
 # -----------------------------
@@ -66,22 +62,14 @@ def main():
         return
 
     # 捕獲影像並進行即時轉換
-<<<<<<< HEAD
-    camera = cv2.VideoCapture(2)
-=======
     camera = cv2.VideoCapture(1)
     camera.set(cv2.CAP_PROP_FRAME_WIDTH,2560)
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT,1440)
->>>>>>> b3dac3b (optimization)
     if not camera.isOpened():
         print("無法打開相機！")
         return
 
-<<<<<<< HEAD
-    cv2.namedWindow("realtime")
-=======
     cv2.namedWindow("realtime", cv2.WINDOW_NORMAL)
->>>>>>> b3dac3b (optimization)
     cv2.setMouseCallback("realtime", mouse_callback)
 
     while True:

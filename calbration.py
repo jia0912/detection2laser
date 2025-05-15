@@ -6,11 +6,7 @@ import serial
 import os
 
 # 初始化串口連接
-<<<<<<< HEAD
-ser = serial.Serial('COM3', 115200, timeout=0.1)  # 修改 COM3 為您的 Arduino 端口號
-=======
 ser = serial.Serial('COM7', 115200, timeout=0.1)  # 修改 COM3 為您的 Arduino 端口號
->>>>>>> b3dac3b (optimization)
 time.sleep(2)  # 給 Arduino 一些啟動時間
 
 response_received = False  # 記錄 Arduino 回應狀態
@@ -97,10 +93,7 @@ def collect_image_point(image_path):
     image_points = []
 
     image = cv2.imread(image_path)
-<<<<<<< HEAD
-=======
     cv2.namedWindow("calbrationImage", cv2.WINDOW_NORMAL)
->>>>>>> b3dac3b (optimization)
     cv2.imshow("calbrationImage", image)
     cv2.setMouseCallback("calbrationImage", on_mouse)
 
@@ -155,13 +148,8 @@ def main():
     os.makedirs(image_folder, exist_ok=True)
 
     camera = cv2.VideoCapture(2)
-<<<<<<< HEAD
-    # camera.set(cv2.CAP_PROP_FRAME_WIDTH,1280)
-    # camera.set(cv2.CAP_PROP_FRAME_HEIGHT,720)
-=======
     camera.set(cv2.CAP_PROP_FRAME_WIDTH,2560)
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT,1440)
->>>>>>> b3dac3b (optimization)
     # 獲取相機解析度
     frame_width = int(camera.get(cv2.CAP_PROP_FRAME_WIDTH))
     frame_height = int(camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -171,11 +159,7 @@ def main():
         print("無法打開相機！")
         return
 
-<<<<<<< HEAD
-    galvo_points = generate_calibration_points((1000,3000),(1000,3000),3,3)
-=======
     galvo_points = generate_calibration_points((0,1500),(800,2200),3,3)
->>>>>>> b3dac3b (optimization)
     print("生成的振鏡校正點:", galvo_points)
 
     image_points = []

@@ -11,13 +11,8 @@ fps = 30
 frame_interval = 1 / fps
 
 # 固定物件的大小
-<<<<<<< HEAD
-person_width = 100
-person_height = 150
-=======
 person_width = 20
 person_height = 20
->>>>>>> b3dac3b (optimization)
 
 # 初始位置 (將物件設置在視窗的左邊)
 x1, y1 = -person_width, (frame_height // 4) - person_height // 2  # 第一個物件
